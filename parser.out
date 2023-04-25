@@ -1,0 +1,3502 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    BREAK
+    CASE
+    COMENT
+    CONST
+    CONTINUE
+    DECLARE
+    DEFAULT
+    DIFERENTE
+    DO
+    ECHO
+    EMPTY
+    ENDFOR
+    ENDFOREACH
+    ENDIF
+    ENDSWITCH
+    ENDWHILE
+    ERRO
+    EXIT
+    FOREACH
+    GLOBAL
+    GOTO
+    IDENTICO
+    IMPLEMENTS
+    INCLUDE
+    INCLUDE_ONCE
+    ISSET
+    LIST
+    MATCH
+    NAMESPACE
+    NAOIDENTICO
+    NULL
+    PRINT
+    PRIVATE
+    PROTECTED
+    PUBLIC
+    STATIC
+    STRING
+    SWITCH
+    THROW
+    TRAITS
+    UNSET
+    YIELD
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> INICIO listadecomandos FIM
+Rule 2     functionorcmds -> comando
+Rule 3     functionorcmds -> function
+Rule 4     functionorcmds -> comando functionorcmds
+Rule 5     functionorcmds -> function functionorcmds
+Rule 6     listadecomandos -> comando
+Rule 7     listadecomandos -> listadecomandos comando
+Rule 8     comando -> VAR ATRIBUICAO expressao PONTOVIRGULA
+Rule 9     comando -> expressao PONTOVIRGULA
+Rule 10    comando -> RETURN expressao PONTOVIRGULA
+Rule 11    comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+Rule 12    comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+Rule 13    comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+Rule 14    comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+Rule 15    functions -> function
+Rule 16    functions -> functions function
+Rule 17    function -> ID LPAREN parametros RPAREN LCHAV listadecomandos RCHAV
+Rule 18    function -> ID LPAREN RPAREN LCHAV listadecomandos RCHAV
+Rule 19    expressao -> expressao POT exp2
+Rule 20    expressao -> exp2
+Rule 21    exp2 -> exp2 INCREMENTA
+Rule 22    exp2 -> exp3
+Rule 23    exp3 -> exp3 DECREMENTA
+Rule 24    exp3 -> exp4
+Rule 25    exp4 -> NOT exp5
+Rule 26    exp4 -> exp5
+Rule 27    exp5 -> exp5 MULTI
+Rule 28    exp5 -> exp6
+Rule 29    exp6 -> exp6 DIVISAO
+Rule 30    exp6 -> exp7
+Rule 31    exp7 -> MODULO exp8
+Rule 32    exp7 -> exp8
+Rule 33    exp8 -> exp8 SOMA
+Rule 34    exp8 -> exp9
+Rule 35    exp9 -> exp9 SUB exp10
+Rule 36    exp9 -> exp10
+Rule 37    exp10 -> exp10 MAIOR exp11
+Rule 38    exp10 -> exp11
+Rule 39    exp11 -> exp11 MENOR exp12
+Rule 40    exp11 -> exp12
+Rule 41    exp12 -> MAIORIGUAL exp13
+Rule 42    exp12 -> exp13
+Rule 43    exp13 -> MENORIGUAL exp14
+Rule 44    exp13 -> exp14
+Rule 45    exp14 -> exp14 IGUAL exp15
+Rule 46    exp14 -> exp15
+Rule 47    exp15 -> exp15 AND exp16
+Rule 48    exp15 -> exp15 OREXCLUSIVO exp16
+Rule 49    exp15 -> exp15 ORINCLUSIVO exp16
+Rule 50    exp15 -> exp16
+Rule 51    exp16 -> chamadaF
+Rule 52    exp16 -> VAR
+Rule 53    exp16 -> INT
+Rule 54    exp16 -> FLOAT
+Rule 55    exp16 -> BOOL
+Rule 56    exp16 -> ID
+Rule 57    exp16 -> LPAREN expressao RPAREN
+Rule 58    atribuir -> VAR ATRIBUICAO expressao
+Rule 59    chamadaF -> ID LPAREN parametros RPAREN
+Rule 60    chamadaF -> ID LPAREN RPAREN
+Rule 61    parametros -> expressao VIRGULA parametros
+Rule 62    parametros -> expressao
+
+Terminals, with rules where they appear
+
+AND                  : 47
+ATRIBUICAO           : 8 58
+BOOL                 : 55
+BREAK                : 
+CASE                 : 
+COMENT               : 
+CONST                : 
+CONTINUE             : 
+DECLARE              : 
+DECREMENTA           : 23
+DEFAULT              : 
+DIFERENTE            : 
+DIVISAO              : 29
+DO                   : 
+ECHO                 : 
+ELSE                 : 11
+EMPTY                : 
+ENDFOR               : 
+ENDFOREACH           : 
+ENDIF                : 
+ENDSWITCH            : 
+ENDWHILE             : 
+ERRO                 : 
+EXIT                 : 
+FIM                  : 1
+FLOAT                : 54
+FOR                  : 13
+FOREACH              : 
+GLOBAL               : 
+GOTO                 : 
+ID                   : 17 18 56 59 60
+IDENTICO             : 
+IF                   : 11 12
+IGUAL                : 45
+IMPLEMENTS           : 
+INCLUDE              : 
+INCLUDE_ONCE         : 
+INCREMENTA           : 21
+INICIO               : 1
+INT                  : 53
+ISSET                : 
+LCHAV                : 11 11 12 13 14 17 18
+LIST                 : 
+LPAREN               : 11 12 13 14 17 18 57 59 60
+MAIOR                : 37
+MAIORIGUAL           : 41
+MATCH                : 
+MENOR                : 39
+MENORIGUAL           : 43
+MODULO               : 31
+MULTI                : 27
+NAMESPACE            : 
+NAOIDENTICO          : 
+NOT                  : 25
+NULL                 : 
+OREXCLUSIVO          : 48
+ORINCLUSIVO          : 49
+PONTOVIRGULA         : 8 9 10 13 13
+POT                  : 19
+PRINT                : 
+PRIVATE              : 
+PROTECTED            : 
+PUBLIC               : 
+RCHAV                : 11 11 12 13 14 17 18
+RETURN               : 10
+RPAREN               : 11 12 13 14 17 18 57 59 60
+SOMA                 : 33
+STATIC               : 
+STRING               : 
+SUB                  : 35
+SWITCH               : 
+THROW                : 
+TRAITS               : 
+UNSET                : 
+VAR                  : 8 52 58
+VIRGULA              : 61
+WHILE                : 14
+YIELD                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+atribuir             : 13
+chamadaF             : 51
+comando              : 2 4 6 7
+exp10                : 35 36 37
+exp11                : 37 38 39
+exp12                : 39 40
+exp13                : 41 42
+exp14                : 43 44 45
+exp15                : 45 46 47 48 49
+exp16                : 47 48 49 50
+exp2                 : 19 20 21
+exp3                 : 22 23
+exp4                 : 24
+exp5                 : 25 26 27
+exp6                 : 28 29
+exp7                 : 30
+exp8                 : 31 32 33
+exp9                 : 34 35
+expressao            : 8 9 10 11 12 13 13 14 19 57 58 61 62
+function             : 3 5 15 16
+functionorcmds       : 4 5
+functions            : 16
+listadecomandos      : 1 7 11 11 12 13 14 17 18
+parametros           : 17 59 61
+programa             : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . INICIO listadecomandos FIM
+
+    INICIO          shift and go to state 2
+
+    programa                       shift and go to state 1
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> INICIO . listadecomandos FIM
+    (6) listadecomandos -> . comando
+    (7) listadecomandos -> . listadecomandos comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    listadecomandos                shift and go to state 3
+    comando                        shift and go to state 4
+    expressao                      shift and go to state 6
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 3
+
+    (1) programa -> INICIO listadecomandos . FIM
+    (7) listadecomandos -> listadecomandos . comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    FIM             shift and go to state 36
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    comando                        shift and go to state 37
+    expressao                      shift and go to state 6
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 4
+
+    (6) listadecomandos -> comando .
+
+    FIM             reduce using rule 6 (listadecomandos -> comando .)
+    VAR             reduce using rule 6 (listadecomandos -> comando .)
+    RETURN          reduce using rule 6 (listadecomandos -> comando .)
+    IF              reduce using rule 6 (listadecomandos -> comando .)
+    FOR             reduce using rule 6 (listadecomandos -> comando .)
+    WHILE           reduce using rule 6 (listadecomandos -> comando .)
+    NOT             reduce using rule 6 (listadecomandos -> comando .)
+    MODULO          reduce using rule 6 (listadecomandos -> comando .)
+    MAIORIGUAL      reduce using rule 6 (listadecomandos -> comando .)
+    MENORIGUAL      reduce using rule 6 (listadecomandos -> comando .)
+    INT             reduce using rule 6 (listadecomandos -> comando .)
+    FLOAT           reduce using rule 6 (listadecomandos -> comando .)
+    BOOL            reduce using rule 6 (listadecomandos -> comando .)
+    ID              reduce using rule 6 (listadecomandos -> comando .)
+    LPAREN          reduce using rule 6 (listadecomandos -> comando .)
+    RCHAV           reduce using rule 6 (listadecomandos -> comando .)
+
+
+state 5
+
+    (8) comando -> VAR . ATRIBUICAO expressao PONTOVIRGULA
+    (52) exp16 -> VAR .
+
+    ATRIBUICAO      shift and go to state 38
+    AND             reduce using rule 52 (exp16 -> VAR .)
+    OREXCLUSIVO     reduce using rule 52 (exp16 -> VAR .)
+    ORINCLUSIVO     reduce using rule 52 (exp16 -> VAR .)
+    IGUAL           reduce using rule 52 (exp16 -> VAR .)
+    MENOR           reduce using rule 52 (exp16 -> VAR .)
+    MAIOR           reduce using rule 52 (exp16 -> VAR .)
+    SUB             reduce using rule 52 (exp16 -> VAR .)
+    SOMA            reduce using rule 52 (exp16 -> VAR .)
+    DIVISAO         reduce using rule 52 (exp16 -> VAR .)
+    MULTI           reduce using rule 52 (exp16 -> VAR .)
+    DECREMENTA      reduce using rule 52 (exp16 -> VAR .)
+    INCREMENTA      reduce using rule 52 (exp16 -> VAR .)
+    PONTOVIRGULA    reduce using rule 52 (exp16 -> VAR .)
+    POT             reduce using rule 52 (exp16 -> VAR .)
+
+
+state 6
+
+    (9) comando -> expressao . PONTOVIRGULA
+    (19) expressao -> expressao . POT exp2
+
+    PONTOVIRGULA    shift and go to state 39
+    POT             shift and go to state 40
+
+
+state 7
+
+    (10) comando -> RETURN . expressao PONTOVIRGULA
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 41
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 8
+
+    (11) comando -> IF . LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF . LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+
+    LPAREN          shift and go to state 43
+
+
+state 9
+
+    (57) exp16 -> LPAREN . expressao RPAREN
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 44
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 10
+
+    (13) comando -> FOR . LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+
+    LPAREN          shift and go to state 45
+
+
+state 11
+
+    (14) comando -> WHILE . LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+
+    LPAREN          shift and go to state 46
+
+
+state 12
+
+    (20) expressao -> exp2 .
+    (21) exp2 -> exp2 . INCREMENTA
+
+    PONTOVIRGULA    reduce using rule 20 (expressao -> exp2 .)
+    POT             reduce using rule 20 (expressao -> exp2 .)
+    RPAREN          reduce using rule 20 (expressao -> exp2 .)
+    VIRGULA         reduce using rule 20 (expressao -> exp2 .)
+    INCREMENTA      shift and go to state 47
+
+
+state 13
+
+    (22) exp2 -> exp3 .
+    (23) exp3 -> exp3 . DECREMENTA
+
+    INCREMENTA      reduce using rule 22 (exp2 -> exp3 .)
+    PONTOVIRGULA    reduce using rule 22 (exp2 -> exp3 .)
+    POT             reduce using rule 22 (exp2 -> exp3 .)
+    RPAREN          reduce using rule 22 (exp2 -> exp3 .)
+    VIRGULA         reduce using rule 22 (exp2 -> exp3 .)
+    DECREMENTA      shift and go to state 48
+
+
+state 14
+
+    (24) exp3 -> exp4 .
+
+    DECREMENTA      reduce using rule 24 (exp3 -> exp4 .)
+    INCREMENTA      reduce using rule 24 (exp3 -> exp4 .)
+    PONTOVIRGULA    reduce using rule 24 (exp3 -> exp4 .)
+    POT             reduce using rule 24 (exp3 -> exp4 .)
+    RPAREN          reduce using rule 24 (exp3 -> exp4 .)
+    VIRGULA         reduce using rule 24 (exp3 -> exp4 .)
+
+
+state 15
+
+    (25) exp4 -> NOT . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp5                           shift and go to state 49
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 16
+
+    (26) exp4 -> exp5 .
+    (27) exp5 -> exp5 . MULTI
+
+    DECREMENTA      reduce using rule 26 (exp4 -> exp5 .)
+    INCREMENTA      reduce using rule 26 (exp4 -> exp5 .)
+    PONTOVIRGULA    reduce using rule 26 (exp4 -> exp5 .)
+    POT             reduce using rule 26 (exp4 -> exp5 .)
+    RPAREN          reduce using rule 26 (exp4 -> exp5 .)
+    VIRGULA         reduce using rule 26 (exp4 -> exp5 .)
+    MULTI           shift and go to state 50
+
+
+state 17
+
+    (28) exp5 -> exp6 .
+    (29) exp6 -> exp6 . DIVISAO
+
+    MULTI           reduce using rule 28 (exp5 -> exp6 .)
+    DECREMENTA      reduce using rule 28 (exp5 -> exp6 .)
+    INCREMENTA      reduce using rule 28 (exp5 -> exp6 .)
+    PONTOVIRGULA    reduce using rule 28 (exp5 -> exp6 .)
+    POT             reduce using rule 28 (exp5 -> exp6 .)
+    RPAREN          reduce using rule 28 (exp5 -> exp6 .)
+    VIRGULA         reduce using rule 28 (exp5 -> exp6 .)
+    DIVISAO         shift and go to state 51
+
+
+state 18
+
+    (30) exp6 -> exp7 .
+
+    DIVISAO         reduce using rule 30 (exp6 -> exp7 .)
+    MULTI           reduce using rule 30 (exp6 -> exp7 .)
+    DECREMENTA      reduce using rule 30 (exp6 -> exp7 .)
+    INCREMENTA      reduce using rule 30 (exp6 -> exp7 .)
+    PONTOVIRGULA    reduce using rule 30 (exp6 -> exp7 .)
+    POT             reduce using rule 30 (exp6 -> exp7 .)
+    RPAREN          reduce using rule 30 (exp6 -> exp7 .)
+    VIRGULA         reduce using rule 30 (exp6 -> exp7 .)
+
+
+state 19
+
+    (31) exp7 -> MODULO . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp8                           shift and go to state 52
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 20
+
+    (32) exp7 -> exp8 .
+    (33) exp8 -> exp8 . SOMA
+
+    DIVISAO         reduce using rule 32 (exp7 -> exp8 .)
+    MULTI           reduce using rule 32 (exp7 -> exp8 .)
+    DECREMENTA      reduce using rule 32 (exp7 -> exp8 .)
+    INCREMENTA      reduce using rule 32 (exp7 -> exp8 .)
+    PONTOVIRGULA    reduce using rule 32 (exp7 -> exp8 .)
+    POT             reduce using rule 32 (exp7 -> exp8 .)
+    RPAREN          reduce using rule 32 (exp7 -> exp8 .)
+    VIRGULA         reduce using rule 32 (exp7 -> exp8 .)
+    SOMA            shift and go to state 53
+
+
+state 21
+
+    (34) exp8 -> exp9 .
+    (35) exp9 -> exp9 . SUB exp10
+
+    SOMA            reduce using rule 34 (exp8 -> exp9 .)
+    DIVISAO         reduce using rule 34 (exp8 -> exp9 .)
+    MULTI           reduce using rule 34 (exp8 -> exp9 .)
+    DECREMENTA      reduce using rule 34 (exp8 -> exp9 .)
+    INCREMENTA      reduce using rule 34 (exp8 -> exp9 .)
+    PONTOVIRGULA    reduce using rule 34 (exp8 -> exp9 .)
+    POT             reduce using rule 34 (exp8 -> exp9 .)
+    RPAREN          reduce using rule 34 (exp8 -> exp9 .)
+    VIRGULA         reduce using rule 34 (exp8 -> exp9 .)
+    SUB             shift and go to state 54
+
+
+state 22
+
+    (36) exp9 -> exp10 .
+    (37) exp10 -> exp10 . MAIOR exp11
+
+    SUB             reduce using rule 36 (exp9 -> exp10 .)
+    SOMA            reduce using rule 36 (exp9 -> exp10 .)
+    DIVISAO         reduce using rule 36 (exp9 -> exp10 .)
+    MULTI           reduce using rule 36 (exp9 -> exp10 .)
+    DECREMENTA      reduce using rule 36 (exp9 -> exp10 .)
+    INCREMENTA      reduce using rule 36 (exp9 -> exp10 .)
+    PONTOVIRGULA    reduce using rule 36 (exp9 -> exp10 .)
+    POT             reduce using rule 36 (exp9 -> exp10 .)
+    RPAREN          reduce using rule 36 (exp9 -> exp10 .)
+    VIRGULA         reduce using rule 36 (exp9 -> exp10 .)
+    MAIOR           shift and go to state 55
+
+
+state 23
+
+    (38) exp10 -> exp11 .
+    (39) exp11 -> exp11 . MENOR exp12
+
+    MAIOR           reduce using rule 38 (exp10 -> exp11 .)
+    SUB             reduce using rule 38 (exp10 -> exp11 .)
+    SOMA            reduce using rule 38 (exp10 -> exp11 .)
+    DIVISAO         reduce using rule 38 (exp10 -> exp11 .)
+    MULTI           reduce using rule 38 (exp10 -> exp11 .)
+    DECREMENTA      reduce using rule 38 (exp10 -> exp11 .)
+    INCREMENTA      reduce using rule 38 (exp10 -> exp11 .)
+    PONTOVIRGULA    reduce using rule 38 (exp10 -> exp11 .)
+    POT             reduce using rule 38 (exp10 -> exp11 .)
+    RPAREN          reduce using rule 38 (exp10 -> exp11 .)
+    VIRGULA         reduce using rule 38 (exp10 -> exp11 .)
+    MENOR           shift and go to state 56
+
+
+state 24
+
+    (40) exp11 -> exp12 .
+
+    MENOR           reduce using rule 40 (exp11 -> exp12 .)
+    MAIOR           reduce using rule 40 (exp11 -> exp12 .)
+    SUB             reduce using rule 40 (exp11 -> exp12 .)
+    SOMA            reduce using rule 40 (exp11 -> exp12 .)
+    DIVISAO         reduce using rule 40 (exp11 -> exp12 .)
+    MULTI           reduce using rule 40 (exp11 -> exp12 .)
+    DECREMENTA      reduce using rule 40 (exp11 -> exp12 .)
+    INCREMENTA      reduce using rule 40 (exp11 -> exp12 .)
+    PONTOVIRGULA    reduce using rule 40 (exp11 -> exp12 .)
+    POT             reduce using rule 40 (exp11 -> exp12 .)
+    RPAREN          reduce using rule 40 (exp11 -> exp12 .)
+    VIRGULA         reduce using rule 40 (exp11 -> exp12 .)
+
+
+state 25
+
+    (41) exp12 -> MAIORIGUAL . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp13                          shift and go to state 57
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 26
+
+    (42) exp12 -> exp13 .
+
+    MENOR           reduce using rule 42 (exp12 -> exp13 .)
+    MAIOR           reduce using rule 42 (exp12 -> exp13 .)
+    SUB             reduce using rule 42 (exp12 -> exp13 .)
+    SOMA            reduce using rule 42 (exp12 -> exp13 .)
+    DIVISAO         reduce using rule 42 (exp12 -> exp13 .)
+    MULTI           reduce using rule 42 (exp12 -> exp13 .)
+    DECREMENTA      reduce using rule 42 (exp12 -> exp13 .)
+    INCREMENTA      reduce using rule 42 (exp12 -> exp13 .)
+    PONTOVIRGULA    reduce using rule 42 (exp12 -> exp13 .)
+    POT             reduce using rule 42 (exp12 -> exp13 .)
+    RPAREN          reduce using rule 42 (exp12 -> exp13 .)
+    VIRGULA         reduce using rule 42 (exp12 -> exp13 .)
+
+
+state 27
+
+    (43) exp13 -> MENORIGUAL . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp14                          shift and go to state 58
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 28
+
+    (44) exp13 -> exp14 .
+    (45) exp14 -> exp14 . IGUAL exp15
+
+    MENOR           reduce using rule 44 (exp13 -> exp14 .)
+    MAIOR           reduce using rule 44 (exp13 -> exp14 .)
+    SUB             reduce using rule 44 (exp13 -> exp14 .)
+    SOMA            reduce using rule 44 (exp13 -> exp14 .)
+    DIVISAO         reduce using rule 44 (exp13 -> exp14 .)
+    MULTI           reduce using rule 44 (exp13 -> exp14 .)
+    DECREMENTA      reduce using rule 44 (exp13 -> exp14 .)
+    INCREMENTA      reduce using rule 44 (exp13 -> exp14 .)
+    PONTOVIRGULA    reduce using rule 44 (exp13 -> exp14 .)
+    POT             reduce using rule 44 (exp13 -> exp14 .)
+    RPAREN          reduce using rule 44 (exp13 -> exp14 .)
+    VIRGULA         reduce using rule 44 (exp13 -> exp14 .)
+    IGUAL           shift and go to state 59
+
+
+state 29
+
+    (46) exp14 -> exp15 .
+    (47) exp15 -> exp15 . AND exp16
+    (48) exp15 -> exp15 . OREXCLUSIVO exp16
+    (49) exp15 -> exp15 . ORINCLUSIVO exp16
+
+    IGUAL           reduce using rule 46 (exp14 -> exp15 .)
+    MENOR           reduce using rule 46 (exp14 -> exp15 .)
+    MAIOR           reduce using rule 46 (exp14 -> exp15 .)
+    SUB             reduce using rule 46 (exp14 -> exp15 .)
+    SOMA            reduce using rule 46 (exp14 -> exp15 .)
+    DIVISAO         reduce using rule 46 (exp14 -> exp15 .)
+    MULTI           reduce using rule 46 (exp14 -> exp15 .)
+    DECREMENTA      reduce using rule 46 (exp14 -> exp15 .)
+    INCREMENTA      reduce using rule 46 (exp14 -> exp15 .)
+    PONTOVIRGULA    reduce using rule 46 (exp14 -> exp15 .)
+    POT             reduce using rule 46 (exp14 -> exp15 .)
+    RPAREN          reduce using rule 46 (exp14 -> exp15 .)
+    VIRGULA         reduce using rule 46 (exp14 -> exp15 .)
+    AND             shift and go to state 60
+    OREXCLUSIVO     shift and go to state 61
+    ORINCLUSIVO     shift and go to state 62
+
+
+state 30
+
+    (50) exp15 -> exp16 .
+
+    AND             reduce using rule 50 (exp15 -> exp16 .)
+    OREXCLUSIVO     reduce using rule 50 (exp15 -> exp16 .)
+    ORINCLUSIVO     reduce using rule 50 (exp15 -> exp16 .)
+    IGUAL           reduce using rule 50 (exp15 -> exp16 .)
+    MENOR           reduce using rule 50 (exp15 -> exp16 .)
+    MAIOR           reduce using rule 50 (exp15 -> exp16 .)
+    SUB             reduce using rule 50 (exp15 -> exp16 .)
+    SOMA            reduce using rule 50 (exp15 -> exp16 .)
+    DIVISAO         reduce using rule 50 (exp15 -> exp16 .)
+    MULTI           reduce using rule 50 (exp15 -> exp16 .)
+    DECREMENTA      reduce using rule 50 (exp15 -> exp16 .)
+    INCREMENTA      reduce using rule 50 (exp15 -> exp16 .)
+    PONTOVIRGULA    reduce using rule 50 (exp15 -> exp16 .)
+    POT             reduce using rule 50 (exp15 -> exp16 .)
+    RPAREN          reduce using rule 50 (exp15 -> exp16 .)
+    VIRGULA         reduce using rule 50 (exp15 -> exp16 .)
+
+
+state 31
+
+    (51) exp16 -> chamadaF .
+
+    AND             reduce using rule 51 (exp16 -> chamadaF .)
+    OREXCLUSIVO     reduce using rule 51 (exp16 -> chamadaF .)
+    ORINCLUSIVO     reduce using rule 51 (exp16 -> chamadaF .)
+    IGUAL           reduce using rule 51 (exp16 -> chamadaF .)
+    MENOR           reduce using rule 51 (exp16 -> chamadaF .)
+    MAIOR           reduce using rule 51 (exp16 -> chamadaF .)
+    SUB             reduce using rule 51 (exp16 -> chamadaF .)
+    SOMA            reduce using rule 51 (exp16 -> chamadaF .)
+    DIVISAO         reduce using rule 51 (exp16 -> chamadaF .)
+    MULTI           reduce using rule 51 (exp16 -> chamadaF .)
+    DECREMENTA      reduce using rule 51 (exp16 -> chamadaF .)
+    INCREMENTA      reduce using rule 51 (exp16 -> chamadaF .)
+    PONTOVIRGULA    reduce using rule 51 (exp16 -> chamadaF .)
+    POT             reduce using rule 51 (exp16 -> chamadaF .)
+    RPAREN          reduce using rule 51 (exp16 -> chamadaF .)
+    VIRGULA         reduce using rule 51 (exp16 -> chamadaF .)
+
+
+state 32
+
+    (53) exp16 -> INT .
+
+    AND             reduce using rule 53 (exp16 -> INT .)
+    OREXCLUSIVO     reduce using rule 53 (exp16 -> INT .)
+    ORINCLUSIVO     reduce using rule 53 (exp16 -> INT .)
+    IGUAL           reduce using rule 53 (exp16 -> INT .)
+    MENOR           reduce using rule 53 (exp16 -> INT .)
+    MAIOR           reduce using rule 53 (exp16 -> INT .)
+    SUB             reduce using rule 53 (exp16 -> INT .)
+    SOMA            reduce using rule 53 (exp16 -> INT .)
+    DIVISAO         reduce using rule 53 (exp16 -> INT .)
+    MULTI           reduce using rule 53 (exp16 -> INT .)
+    DECREMENTA      reduce using rule 53 (exp16 -> INT .)
+    INCREMENTA      reduce using rule 53 (exp16 -> INT .)
+    PONTOVIRGULA    reduce using rule 53 (exp16 -> INT .)
+    POT             reduce using rule 53 (exp16 -> INT .)
+    RPAREN          reduce using rule 53 (exp16 -> INT .)
+    VIRGULA         reduce using rule 53 (exp16 -> INT .)
+
+
+state 33
+
+    (54) exp16 -> FLOAT .
+
+    AND             reduce using rule 54 (exp16 -> FLOAT .)
+    OREXCLUSIVO     reduce using rule 54 (exp16 -> FLOAT .)
+    ORINCLUSIVO     reduce using rule 54 (exp16 -> FLOAT .)
+    IGUAL           reduce using rule 54 (exp16 -> FLOAT .)
+    MENOR           reduce using rule 54 (exp16 -> FLOAT .)
+    MAIOR           reduce using rule 54 (exp16 -> FLOAT .)
+    SUB             reduce using rule 54 (exp16 -> FLOAT .)
+    SOMA            reduce using rule 54 (exp16 -> FLOAT .)
+    DIVISAO         reduce using rule 54 (exp16 -> FLOAT .)
+    MULTI           reduce using rule 54 (exp16 -> FLOAT .)
+    DECREMENTA      reduce using rule 54 (exp16 -> FLOAT .)
+    INCREMENTA      reduce using rule 54 (exp16 -> FLOAT .)
+    PONTOVIRGULA    reduce using rule 54 (exp16 -> FLOAT .)
+    POT             reduce using rule 54 (exp16 -> FLOAT .)
+    RPAREN          reduce using rule 54 (exp16 -> FLOAT .)
+    VIRGULA         reduce using rule 54 (exp16 -> FLOAT .)
+
+
+state 34
+
+    (55) exp16 -> BOOL .
+
+    AND             reduce using rule 55 (exp16 -> BOOL .)
+    OREXCLUSIVO     reduce using rule 55 (exp16 -> BOOL .)
+    ORINCLUSIVO     reduce using rule 55 (exp16 -> BOOL .)
+    IGUAL           reduce using rule 55 (exp16 -> BOOL .)
+    MENOR           reduce using rule 55 (exp16 -> BOOL .)
+    MAIOR           reduce using rule 55 (exp16 -> BOOL .)
+    SUB             reduce using rule 55 (exp16 -> BOOL .)
+    SOMA            reduce using rule 55 (exp16 -> BOOL .)
+    DIVISAO         reduce using rule 55 (exp16 -> BOOL .)
+    MULTI           reduce using rule 55 (exp16 -> BOOL .)
+    DECREMENTA      reduce using rule 55 (exp16 -> BOOL .)
+    INCREMENTA      reduce using rule 55 (exp16 -> BOOL .)
+    PONTOVIRGULA    reduce using rule 55 (exp16 -> BOOL .)
+    POT             reduce using rule 55 (exp16 -> BOOL .)
+    RPAREN          reduce using rule 55 (exp16 -> BOOL .)
+    VIRGULA         reduce using rule 55 (exp16 -> BOOL .)
+
+
+state 35
+
+    (56) exp16 -> ID .
+    (59) chamadaF -> ID . LPAREN parametros RPAREN
+    (60) chamadaF -> ID . LPAREN RPAREN
+
+    AND             reduce using rule 56 (exp16 -> ID .)
+    OREXCLUSIVO     reduce using rule 56 (exp16 -> ID .)
+    ORINCLUSIVO     reduce using rule 56 (exp16 -> ID .)
+    IGUAL           reduce using rule 56 (exp16 -> ID .)
+    MENOR           reduce using rule 56 (exp16 -> ID .)
+    MAIOR           reduce using rule 56 (exp16 -> ID .)
+    SUB             reduce using rule 56 (exp16 -> ID .)
+    SOMA            reduce using rule 56 (exp16 -> ID .)
+    DIVISAO         reduce using rule 56 (exp16 -> ID .)
+    MULTI           reduce using rule 56 (exp16 -> ID .)
+    DECREMENTA      reduce using rule 56 (exp16 -> ID .)
+    INCREMENTA      reduce using rule 56 (exp16 -> ID .)
+    PONTOVIRGULA    reduce using rule 56 (exp16 -> ID .)
+    POT             reduce using rule 56 (exp16 -> ID .)
+    RPAREN          reduce using rule 56 (exp16 -> ID .)
+    VIRGULA         reduce using rule 56 (exp16 -> ID .)
+    LPAREN          shift and go to state 63
+
+
+state 36
+
+    (1) programa -> INICIO listadecomandos FIM .
+
+    $end            reduce using rule 1 (programa -> INICIO listadecomandos FIM .)
+
+
+state 37
+
+    (7) listadecomandos -> listadecomandos comando .
+
+    FIM             reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    VAR             reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    RETURN          reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    IF              reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    FOR             reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    WHILE           reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    NOT             reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    MODULO          reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    MAIORIGUAL      reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    MENORIGUAL      reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    INT             reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    FLOAT           reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    BOOL            reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    ID              reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    LPAREN          reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+    RCHAV           reduce using rule 7 (listadecomandos -> listadecomandos comando .)
+
+
+state 38
+
+    (8) comando -> VAR ATRIBUICAO . expressao PONTOVIRGULA
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 64
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 39
+
+    (9) comando -> expressao PONTOVIRGULA .
+
+    FIM             reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    VAR             reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    RETURN          reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    IF              reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    FOR             reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    WHILE           reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    NOT             reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    MODULO          reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    MAIORIGUAL      reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    MENORIGUAL      reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    INT             reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    FLOAT           reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    BOOL            reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    ID              reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    LPAREN          reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+    RCHAV           reduce using rule 9 (comando -> expressao PONTOVIRGULA .)
+
+
+state 40
+
+    (19) expressao -> expressao POT . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp2                           shift and go to state 65
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 41
+
+    (10) comando -> RETURN expressao . PONTOVIRGULA
+    (19) expressao -> expressao . POT exp2
+
+    PONTOVIRGULA    shift and go to state 66
+    POT             shift and go to state 40
+
+
+state 42
+
+    (52) exp16 -> VAR .
+
+    AND             reduce using rule 52 (exp16 -> VAR .)
+    OREXCLUSIVO     reduce using rule 52 (exp16 -> VAR .)
+    ORINCLUSIVO     reduce using rule 52 (exp16 -> VAR .)
+    IGUAL           reduce using rule 52 (exp16 -> VAR .)
+    MENOR           reduce using rule 52 (exp16 -> VAR .)
+    MAIOR           reduce using rule 52 (exp16 -> VAR .)
+    SUB             reduce using rule 52 (exp16 -> VAR .)
+    SOMA            reduce using rule 52 (exp16 -> VAR .)
+    DIVISAO         reduce using rule 52 (exp16 -> VAR .)
+    MULTI           reduce using rule 52 (exp16 -> VAR .)
+    DECREMENTA      reduce using rule 52 (exp16 -> VAR .)
+    INCREMENTA      reduce using rule 52 (exp16 -> VAR .)
+    PONTOVIRGULA    reduce using rule 52 (exp16 -> VAR .)
+    POT             reduce using rule 52 (exp16 -> VAR .)
+    RPAREN          reduce using rule 52 (exp16 -> VAR .)
+    VIRGULA         reduce using rule 52 (exp16 -> VAR .)
+
+
+state 43
+
+    (11) comando -> IF LPAREN . expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF LPAREN . expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 67
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 44
+
+    (57) exp16 -> LPAREN expressao . RPAREN
+    (19) expressao -> expressao . POT exp2
+
+    RPAREN          shift and go to state 68
+    POT             shift and go to state 40
+
+
+state 45
+
+    (13) comando -> FOR LPAREN . atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (58) atribuir -> . VAR ATRIBUICAO expressao
+
+    VAR             shift and go to state 70
+
+    atribuir                       shift and go to state 69
+
+state 46
+
+    (14) comando -> WHILE LPAREN . expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 71
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 47
+
+    (21) exp2 -> exp2 INCREMENTA .
+
+    INCREMENTA      reduce using rule 21 (exp2 -> exp2 INCREMENTA .)
+    PONTOVIRGULA    reduce using rule 21 (exp2 -> exp2 INCREMENTA .)
+    POT             reduce using rule 21 (exp2 -> exp2 INCREMENTA .)
+    RPAREN          reduce using rule 21 (exp2 -> exp2 INCREMENTA .)
+    VIRGULA         reduce using rule 21 (exp2 -> exp2 INCREMENTA .)
+
+
+state 48
+
+    (23) exp3 -> exp3 DECREMENTA .
+
+    DECREMENTA      reduce using rule 23 (exp3 -> exp3 DECREMENTA .)
+    INCREMENTA      reduce using rule 23 (exp3 -> exp3 DECREMENTA .)
+    PONTOVIRGULA    reduce using rule 23 (exp3 -> exp3 DECREMENTA .)
+    POT             reduce using rule 23 (exp3 -> exp3 DECREMENTA .)
+    RPAREN          reduce using rule 23 (exp3 -> exp3 DECREMENTA .)
+    VIRGULA         reduce using rule 23 (exp3 -> exp3 DECREMENTA .)
+
+
+state 49
+
+    (25) exp4 -> NOT exp5 .
+    (27) exp5 -> exp5 . MULTI
+
+    DECREMENTA      reduce using rule 25 (exp4 -> NOT exp5 .)
+    INCREMENTA      reduce using rule 25 (exp4 -> NOT exp5 .)
+    PONTOVIRGULA    reduce using rule 25 (exp4 -> NOT exp5 .)
+    POT             reduce using rule 25 (exp4 -> NOT exp5 .)
+    RPAREN          reduce using rule 25 (exp4 -> NOT exp5 .)
+    VIRGULA         reduce using rule 25 (exp4 -> NOT exp5 .)
+    MULTI           shift and go to state 50
+
+
+state 50
+
+    (27) exp5 -> exp5 MULTI .
+
+    MULTI           reduce using rule 27 (exp5 -> exp5 MULTI .)
+    DECREMENTA      reduce using rule 27 (exp5 -> exp5 MULTI .)
+    INCREMENTA      reduce using rule 27 (exp5 -> exp5 MULTI .)
+    PONTOVIRGULA    reduce using rule 27 (exp5 -> exp5 MULTI .)
+    POT             reduce using rule 27 (exp5 -> exp5 MULTI .)
+    RPAREN          reduce using rule 27 (exp5 -> exp5 MULTI .)
+    VIRGULA         reduce using rule 27 (exp5 -> exp5 MULTI .)
+
+
+state 51
+
+    (29) exp6 -> exp6 DIVISAO .
+
+    DIVISAO         reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    MULTI           reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    DECREMENTA      reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    INCREMENTA      reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    PONTOVIRGULA    reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    POT             reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    RPAREN          reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+    VIRGULA         reduce using rule 29 (exp6 -> exp6 DIVISAO .)
+
+
+state 52
+
+    (31) exp7 -> MODULO exp8 .
+    (33) exp8 -> exp8 . SOMA
+
+    DIVISAO         reduce using rule 31 (exp7 -> MODULO exp8 .)
+    MULTI           reduce using rule 31 (exp7 -> MODULO exp8 .)
+    DECREMENTA      reduce using rule 31 (exp7 -> MODULO exp8 .)
+    INCREMENTA      reduce using rule 31 (exp7 -> MODULO exp8 .)
+    PONTOVIRGULA    reduce using rule 31 (exp7 -> MODULO exp8 .)
+    POT             reduce using rule 31 (exp7 -> MODULO exp8 .)
+    RPAREN          reduce using rule 31 (exp7 -> MODULO exp8 .)
+    VIRGULA         reduce using rule 31 (exp7 -> MODULO exp8 .)
+    SOMA            shift and go to state 53
+
+
+state 53
+
+    (33) exp8 -> exp8 SOMA .
+
+    SOMA            reduce using rule 33 (exp8 -> exp8 SOMA .)
+    DIVISAO         reduce using rule 33 (exp8 -> exp8 SOMA .)
+    MULTI           reduce using rule 33 (exp8 -> exp8 SOMA .)
+    DECREMENTA      reduce using rule 33 (exp8 -> exp8 SOMA .)
+    INCREMENTA      reduce using rule 33 (exp8 -> exp8 SOMA .)
+    PONTOVIRGULA    reduce using rule 33 (exp8 -> exp8 SOMA .)
+    POT             reduce using rule 33 (exp8 -> exp8 SOMA .)
+    RPAREN          reduce using rule 33 (exp8 -> exp8 SOMA .)
+    VIRGULA         reduce using rule 33 (exp8 -> exp8 SOMA .)
+
+
+state 54
+
+    (35) exp9 -> exp9 SUB . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp10                          shift and go to state 72
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 55
+
+    (37) exp10 -> exp10 MAIOR . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp11                          shift and go to state 73
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 56
+
+    (39) exp11 -> exp11 MENOR . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp12                          shift and go to state 74
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 57
+
+    (41) exp12 -> MAIORIGUAL exp13 .
+
+    MENOR           reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    MAIOR           reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    SUB             reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    SOMA            reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    DIVISAO         reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    MULTI           reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    DECREMENTA      reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    INCREMENTA      reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    PONTOVIRGULA    reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    POT             reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    RPAREN          reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+    VIRGULA         reduce using rule 41 (exp12 -> MAIORIGUAL exp13 .)
+
+
+state 58
+
+    (43) exp13 -> MENORIGUAL exp14 .
+    (45) exp14 -> exp14 . IGUAL exp15
+
+    MENOR           reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    MAIOR           reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    SUB             reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    SOMA            reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    DIVISAO         reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    MULTI           reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    DECREMENTA      reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    INCREMENTA      reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    PONTOVIRGULA    reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    POT             reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    RPAREN          reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    VIRGULA         reduce using rule 43 (exp13 -> MENORIGUAL exp14 .)
+    IGUAL           shift and go to state 59
+
+
+state 59
+
+    (45) exp14 -> exp14 IGUAL . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp15                          shift and go to state 75
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 60
+
+    (47) exp15 -> exp15 AND . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp16                          shift and go to state 76
+    chamadaF                       shift and go to state 31
+
+state 61
+
+    (48) exp15 -> exp15 OREXCLUSIVO . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp16                          shift and go to state 77
+    chamadaF                       shift and go to state 31
+
+state 62
+
+    (49) exp15 -> exp15 ORINCLUSIVO . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    exp16                          shift and go to state 78
+    chamadaF                       shift and go to state 31
+
+state 63
+
+    (59) chamadaF -> ID LPAREN . parametros RPAREN
+    (60) chamadaF -> ID LPAREN . RPAREN
+    (61) parametros -> . expressao VIRGULA parametros
+    (62) parametros -> . expressao
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    RPAREN          shift and go to state 80
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    parametros                     shift and go to state 79
+    expressao                      shift and go to state 81
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 64
+
+    (8) comando -> VAR ATRIBUICAO expressao . PONTOVIRGULA
+    (19) expressao -> expressao . POT exp2
+
+    PONTOVIRGULA    shift and go to state 82
+    POT             shift and go to state 40
+
+
+state 65
+
+    (19) expressao -> expressao POT exp2 .
+    (21) exp2 -> exp2 . INCREMENTA
+
+    PONTOVIRGULA    reduce using rule 19 (expressao -> expressao POT exp2 .)
+    POT             reduce using rule 19 (expressao -> expressao POT exp2 .)
+    RPAREN          reduce using rule 19 (expressao -> expressao POT exp2 .)
+    VIRGULA         reduce using rule 19 (expressao -> expressao POT exp2 .)
+    INCREMENTA      shift and go to state 47
+
+
+state 66
+
+    (10) comando -> RETURN expressao PONTOVIRGULA .
+
+    FIM             reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    VAR             reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    RETURN          reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    IF              reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    FOR             reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    WHILE           reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    NOT             reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    MODULO          reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    MAIORIGUAL      reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    MENORIGUAL      reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    INT             reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    FLOAT           reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    BOOL            reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    ID              reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    LPAREN          reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+    RCHAV           reduce using rule 10 (comando -> RETURN expressao PONTOVIRGULA .)
+
+
+state 67
+
+    (11) comando -> IF LPAREN expressao . RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF LPAREN expressao . RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> expressao . POT exp2
+
+    RPAREN          shift and go to state 83
+    POT             shift and go to state 40
+
+
+state 68
+
+    (57) exp16 -> LPAREN expressao RPAREN .
+
+    AND             reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    OREXCLUSIVO     reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    ORINCLUSIVO     reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    IGUAL           reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    MENOR           reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    MAIOR           reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    SUB             reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    SOMA            reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    DIVISAO         reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    MULTI           reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    DECREMENTA      reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    INCREMENTA      reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    PONTOVIRGULA    reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    POT             reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    RPAREN          reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+    VIRGULA         reduce using rule 57 (exp16 -> LPAREN expressao RPAREN .)
+
+
+state 69
+
+    (13) comando -> FOR LPAREN atribuir . PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+
+    PONTOVIRGULA    shift and go to state 84
+
+
+state 70
+
+    (58) atribuir -> VAR . ATRIBUICAO expressao
+
+    ATRIBUICAO      shift and go to state 85
+
+
+state 71
+
+    (14) comando -> WHILE LPAREN expressao . RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> expressao . POT exp2
+
+    RPAREN          shift and go to state 86
+    POT             shift and go to state 40
+
+
+state 72
+
+    (35) exp9 -> exp9 SUB exp10 .
+    (37) exp10 -> exp10 . MAIOR exp11
+
+    SUB             reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    SOMA            reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    DIVISAO         reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    MULTI           reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    DECREMENTA      reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    INCREMENTA      reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    PONTOVIRGULA    reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    POT             reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    RPAREN          reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    VIRGULA         reduce using rule 35 (exp9 -> exp9 SUB exp10 .)
+    MAIOR           shift and go to state 55
+
+
+state 73
+
+    (37) exp10 -> exp10 MAIOR exp11 .
+    (39) exp11 -> exp11 . MENOR exp12
+
+    MAIOR           reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    SUB             reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    SOMA            reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    DIVISAO         reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    MULTI           reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    DECREMENTA      reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    INCREMENTA      reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    PONTOVIRGULA    reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    POT             reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    RPAREN          reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    VIRGULA         reduce using rule 37 (exp10 -> exp10 MAIOR exp11 .)
+    MENOR           shift and go to state 56
+
+
+state 74
+
+    (39) exp11 -> exp11 MENOR exp12 .
+
+    MENOR           reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    MAIOR           reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    SUB             reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    SOMA            reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    DIVISAO         reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    MULTI           reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    DECREMENTA      reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    INCREMENTA      reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    PONTOVIRGULA    reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    POT             reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    RPAREN          reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+    VIRGULA         reduce using rule 39 (exp11 -> exp11 MENOR exp12 .)
+
+
+state 75
+
+    (45) exp14 -> exp14 IGUAL exp15 .
+    (47) exp15 -> exp15 . AND exp16
+    (48) exp15 -> exp15 . OREXCLUSIVO exp16
+    (49) exp15 -> exp15 . ORINCLUSIVO exp16
+
+    IGUAL           reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    MENOR           reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    MAIOR           reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    SUB             reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    SOMA            reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    DIVISAO         reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    MULTI           reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    DECREMENTA      reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    INCREMENTA      reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    PONTOVIRGULA    reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    POT             reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    RPAREN          reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    VIRGULA         reduce using rule 45 (exp14 -> exp14 IGUAL exp15 .)
+    AND             shift and go to state 60
+    OREXCLUSIVO     shift and go to state 61
+    ORINCLUSIVO     shift and go to state 62
+
+
+state 76
+
+    (47) exp15 -> exp15 AND exp16 .
+
+    AND             reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    OREXCLUSIVO     reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    ORINCLUSIVO     reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    IGUAL           reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    MENOR           reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    MAIOR           reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    SUB             reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    SOMA            reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    DIVISAO         reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    MULTI           reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    DECREMENTA      reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    INCREMENTA      reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    PONTOVIRGULA    reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    POT             reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    RPAREN          reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+    VIRGULA         reduce using rule 47 (exp15 -> exp15 AND exp16 .)
+
+
+state 77
+
+    (48) exp15 -> exp15 OREXCLUSIVO exp16 .
+
+    AND             reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    OREXCLUSIVO     reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    ORINCLUSIVO     reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    IGUAL           reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    MENOR           reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    MAIOR           reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    SUB             reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    SOMA            reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    DIVISAO         reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    MULTI           reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    DECREMENTA      reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    INCREMENTA      reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    PONTOVIRGULA    reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    POT             reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    RPAREN          reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+    VIRGULA         reduce using rule 48 (exp15 -> exp15 OREXCLUSIVO exp16 .)
+
+
+state 78
+
+    (49) exp15 -> exp15 ORINCLUSIVO exp16 .
+
+    AND             reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    OREXCLUSIVO     reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    ORINCLUSIVO     reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    IGUAL           reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    MENOR           reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    MAIOR           reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    SUB             reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    SOMA            reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    DIVISAO         reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    MULTI           reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    DECREMENTA      reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    INCREMENTA      reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    PONTOVIRGULA    reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    POT             reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    RPAREN          reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+    VIRGULA         reduce using rule 49 (exp15 -> exp15 ORINCLUSIVO exp16 .)
+
+
+state 79
+
+    (59) chamadaF -> ID LPAREN parametros . RPAREN
+
+    RPAREN          shift and go to state 87
+
+
+state 80
+
+    (60) chamadaF -> ID LPAREN RPAREN .
+
+    AND             reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    OREXCLUSIVO     reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    ORINCLUSIVO     reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    IGUAL           reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    MENOR           reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    MAIOR           reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    SUB             reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    SOMA            reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    DIVISAO         reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    MULTI           reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    DECREMENTA      reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    INCREMENTA      reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    PONTOVIRGULA    reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    POT             reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    RPAREN          reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+    VIRGULA         reduce using rule 60 (chamadaF -> ID LPAREN RPAREN .)
+
+
+state 81
+
+    (61) parametros -> expressao . VIRGULA parametros
+    (62) parametros -> expressao .
+    (19) expressao -> expressao . POT exp2
+
+    VIRGULA         shift and go to state 88
+    RPAREN          reduce using rule 62 (parametros -> expressao .)
+    POT             shift and go to state 40
+
+
+state 82
+
+    (8) comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .
+
+    FIM             reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    VAR             reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    RETURN          reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    IF              reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    FOR             reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    WHILE           reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    NOT             reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    MODULO          reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    MAIORIGUAL      reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    MENORIGUAL      reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    INT             reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    FLOAT           reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    BOOL            reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    ID              reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    LPAREN          reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+    RCHAV           reduce using rule 8 (comando -> VAR ATRIBUICAO expressao PONTOVIRGULA .)
+
+
+state 83
+
+    (11) comando -> IF LPAREN expressao RPAREN . LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF LPAREN expressao RPAREN . LCHAV listadecomandos RCHAV
+
+    LCHAV           shift and go to state 89
+
+
+state 84
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA . expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 90
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 85
+
+    (58) atribuir -> VAR ATRIBUICAO . expressao
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 91
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 86
+
+    (14) comando -> WHILE LPAREN expressao RPAREN . LCHAV listadecomandos RCHAV
+
+    LCHAV           shift and go to state 92
+
+
+state 87
+
+    (59) chamadaF -> ID LPAREN parametros RPAREN .
+
+    AND             reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    OREXCLUSIVO     reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    ORINCLUSIVO     reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    IGUAL           reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    MENOR           reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    MAIOR           reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    SUB             reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    SOMA            reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    DIVISAO         reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    MULTI           reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    DECREMENTA      reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    INCREMENTA      reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    PONTOVIRGULA    reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    POT             reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    RPAREN          reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+    VIRGULA         reduce using rule 59 (chamadaF -> ID LPAREN parametros RPAREN .)
+
+
+state 88
+
+    (61) parametros -> expressao VIRGULA . parametros
+    (61) parametros -> . expressao VIRGULA parametros
+    (62) parametros -> . expressao
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 81
+    parametros                     shift and go to state 93
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 89
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV . listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF LPAREN expressao RPAREN LCHAV . listadecomandos RCHAV
+    (6) listadecomandos -> . comando
+    (7) listadecomandos -> . listadecomandos comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    listadecomandos                shift and go to state 94
+    comando                        shift and go to state 4
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 90
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao . PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> expressao . POT exp2
+
+    PONTOVIRGULA    shift and go to state 95
+    POT             shift and go to state 40
+
+
+state 91
+
+    (58) atribuir -> VAR ATRIBUICAO expressao .
+    (19) expressao -> expressao . POT exp2
+
+    PONTOVIRGULA    reduce using rule 58 (atribuir -> VAR ATRIBUICAO expressao .)
+    POT             shift and go to state 40
+
+
+state 92
+
+    (14) comando -> WHILE LPAREN expressao RPAREN LCHAV . listadecomandos RCHAV
+    (6) listadecomandos -> . comando
+    (7) listadecomandos -> . listadecomandos comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    listadecomandos                shift and go to state 96
+    comando                        shift and go to state 4
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 93
+
+    (61) parametros -> expressao VIRGULA parametros .
+
+    RPAREN          reduce using rule 61 (parametros -> expressao VIRGULA parametros .)
+
+
+state 94
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos . RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos . RCHAV
+    (7) listadecomandos -> listadecomandos . comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    RCHAV           shift and go to state 97
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    comando                        shift and go to state 37
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 95
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA . expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    VAR             shift and go to state 42
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 98
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 96
+
+    (14) comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos . RCHAV
+    (7) listadecomandos -> listadecomandos . comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    RCHAV           shift and go to state 99
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    comando                        shift and go to state 37
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 97
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV . ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .
+
+    ELSE            shift and go to state 100
+    FIM             reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    VAR             reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    RETURN          reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    IF              reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    FOR             reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    WHILE           reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    NOT             reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MODULO          reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MAIORIGUAL      reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MENORIGUAL      reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    INT             reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    FLOAT           reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    BOOL            reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    ID              reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    LPAREN          reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    RCHAV           reduce using rule 12 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+
+
+state 98
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao . RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> expressao . POT exp2
+
+    RPAREN          shift and go to state 101
+    POT             shift and go to state 40
+
+
+state 99
+
+    (14) comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .
+
+    FIM             reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    VAR             reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    RETURN          reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    IF              reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    FOR             reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    WHILE           reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    NOT             reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MODULO          reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MAIORIGUAL      reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MENORIGUAL      reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    INT             reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    FLOAT           reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    BOOL            reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    ID              reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    LPAREN          reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+    RCHAV           reduce using rule 14 (comando -> WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV .)
+
+
+state 100
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE . LCHAV listadecomandos RCHAV
+
+    LCHAV           shift and go to state 102
+
+
+state 101
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN . LCHAV listadecomandos RCHAV
+
+    LCHAV           shift and go to state 103
+
+
+state 102
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV . listadecomandos RCHAV
+    (6) listadecomandos -> . comando
+    (7) listadecomandos -> . listadecomandos comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    listadecomandos                shift and go to state 104
+    comando                        shift and go to state 4
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 103
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV . listadecomandos RCHAV
+    (6) listadecomandos -> . comando
+    (7) listadecomandos -> . listadecomandos comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    listadecomandos                shift and go to state 105
+    comando                        shift and go to state 4
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 104
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos . RCHAV
+    (7) listadecomandos -> listadecomandos . comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    RCHAV           shift and go to state 106
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    comando                        shift and go to state 37
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 105
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos . RCHAV
+    (7) listadecomandos -> listadecomandos . comando
+    (8) comando -> . VAR ATRIBUICAO expressao PONTOVIRGULA
+    (9) comando -> . expressao PONTOVIRGULA
+    (10) comando -> . RETURN expressao PONTOVIRGULA
+    (11) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV
+    (12) comando -> . IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (13) comando -> . FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV
+    (14) comando -> . WHILE LPAREN expressao RPAREN LCHAV listadecomandos RCHAV
+    (19) expressao -> . expressao POT exp2
+    (20) expressao -> . exp2
+    (21) exp2 -> . exp2 INCREMENTA
+    (22) exp2 -> . exp3
+    (23) exp3 -> . exp3 DECREMENTA
+    (24) exp3 -> . exp4
+    (25) exp4 -> . NOT exp5
+    (26) exp4 -> . exp5
+    (27) exp5 -> . exp5 MULTI
+    (28) exp5 -> . exp6
+    (29) exp6 -> . exp6 DIVISAO
+    (30) exp6 -> . exp7
+    (31) exp7 -> . MODULO exp8
+    (32) exp7 -> . exp8
+    (33) exp8 -> . exp8 SOMA
+    (34) exp8 -> . exp9
+    (35) exp9 -> . exp9 SUB exp10
+    (36) exp9 -> . exp10
+    (37) exp10 -> . exp10 MAIOR exp11
+    (38) exp10 -> . exp11
+    (39) exp11 -> . exp11 MENOR exp12
+    (40) exp11 -> . exp12
+    (41) exp12 -> . MAIORIGUAL exp13
+    (42) exp12 -> . exp13
+    (43) exp13 -> . MENORIGUAL exp14
+    (44) exp13 -> . exp14
+    (45) exp14 -> . exp14 IGUAL exp15
+    (46) exp14 -> . exp15
+    (47) exp15 -> . exp15 AND exp16
+    (48) exp15 -> . exp15 OREXCLUSIVO exp16
+    (49) exp15 -> . exp15 ORINCLUSIVO exp16
+    (50) exp15 -> . exp16
+    (51) exp16 -> . chamadaF
+    (52) exp16 -> . VAR
+    (53) exp16 -> . INT
+    (54) exp16 -> . FLOAT
+    (55) exp16 -> . BOOL
+    (56) exp16 -> . ID
+    (57) exp16 -> . LPAREN expressao RPAREN
+    (59) chamadaF -> . ID LPAREN parametros RPAREN
+    (60) chamadaF -> . ID LPAREN RPAREN
+
+    RCHAV           shift and go to state 107
+    VAR             shift and go to state 5
+    RETURN          shift and go to state 7
+    IF              shift and go to state 8
+    FOR             shift and go to state 10
+    WHILE           shift and go to state 11
+    NOT             shift and go to state 15
+    MODULO          shift and go to state 19
+    MAIORIGUAL      shift and go to state 25
+    MENORIGUAL      shift and go to state 27
+    INT             shift and go to state 32
+    FLOAT           shift and go to state 33
+    BOOL            shift and go to state 34
+    ID              shift and go to state 35
+    LPAREN          shift and go to state 9
+
+    expressao                      shift and go to state 6
+    comando                        shift and go to state 37
+    exp2                           shift and go to state 12
+    exp3                           shift and go to state 13
+    exp4                           shift and go to state 14
+    exp5                           shift and go to state 16
+    exp6                           shift and go to state 17
+    exp7                           shift and go to state 18
+    exp8                           shift and go to state 20
+    exp9                           shift and go to state 21
+    exp10                          shift and go to state 22
+    exp11                          shift and go to state 23
+    exp12                          shift and go to state 24
+    exp13                          shift and go to state 26
+    exp14                          shift and go to state 28
+    exp15                          shift and go to state 29
+    exp16                          shift and go to state 30
+    chamadaF                       shift and go to state 31
+
+state 106
+
+    (11) comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .
+
+    FIM             reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    VAR             reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    RETURN          reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    IF              reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    FOR             reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    WHILE           reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    NOT             reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    MODULO          reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    MAIORIGUAL      reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    MENORIGUAL      reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    INT             reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    FLOAT           reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    BOOL            reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    ID              reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    LPAREN          reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+    RCHAV           reduce using rule 11 (comando -> IF LPAREN expressao RPAREN LCHAV listadecomandos RCHAV ELSE LCHAV listadecomandos RCHAV .)
+
+
+state 107
+
+    (13) comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .
+
+    FIM             reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    VAR             reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    RETURN          reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    IF              reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    FOR             reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    WHILE           reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    NOT             reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MODULO          reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MAIORIGUAL      reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    MENORIGUAL      reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    INT             reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    FLOAT           reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    BOOL            reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    ID              reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    LPAREN          reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+    RCHAV           reduce using rule 13 (comando -> FOR LPAREN atribuir PONTOVIRGULA expressao PONTOVIRGULA expressao RPAREN LCHAV listadecomandos RCHAV .)
+
