@@ -1,4 +1,4 @@
-from sintatica import *
+from sintatico import *
 
 parser = yacc.yacc()
 yacc.parse(debug=True)

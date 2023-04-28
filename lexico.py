@@ -53,7 +53,7 @@ reservadas = {
   'yield': 'YIELD'
 }
 tokens = [
-  'INICIO', 'FIM', 'ATRIBUICAO', 'SOMA', 'SUB', 'MULTI', 'DIVISAO', 'MODULO',
+  'LINHA', 'INICIO', 'FIM', 'ATRIBUICAO', 'SOMA', 'SUB', 'MULTI', 'DIVISAO', 'MODULO',
   'POT', 'LPAREN', 'RPAREN', 'LCHAV', 'RCHAV', 'VIRGULA', 'PONTOVIRGULA',
   'AND', 'ORINCLUSIVO', 'OREXCLUSIVO', 'NOT', 'MENOR', 'MAIOR', 'MENORIGUAL',
   'MAIORIGUAL', 'DIFERENTE', 'IGUAL', 'IDENTICO', 'NAOIDENTICO', 'INCREMENTA',
@@ -62,7 +62,9 @@ tokens = [
 
 stack = [0]
 states = (('idstate', 'exclusive'),
-          ('dedstate', 'exclusive'),)
+          ('dedstate', 'exclusive'))
+
+t_LINHA = '[a-zA-Z][a-zA-Z \t]+'
 t_INICIO = r'\<\?php'
 t_FIM = r'\?\>'
 t_ATRIBUICAO = r'='
@@ -94,6 +96,7 @@ t_INCREMENTA = r'\+\+'
 t_DECREMENTA = r'--'
 t_ERRO = r'@'
 t_BOOL = r'(true)|(false)'
+#t_ignore = ' '
 
 def t_breakline(t):
     r'\n+'                                
