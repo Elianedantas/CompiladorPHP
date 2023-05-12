@@ -99,7 +99,6 @@ def p_exp(p):
   '''exp : exp POT exp2
          | exp2'''
   if (len(p) == 4):
-    # n ta reconhecendo os parametros
     p[0] = PotExp(p[1], p[3])
   else:
     p[0] = p[1]
