@@ -64,12 +64,12 @@ def p_listadecomandos(p):
 
 
 def p_function(p):
-  '''function : ID LPAREN parametros RPAREN LCHAV listadecomandos RCHAV
-              | ID LPAREN RPAREN LCHAV listadecomandos RCHAV'''
-  if (isinstance(p[3], Parametros)):
-    p[0] = FuncDec(p[1], p[3], p[6])
+  '''function : FUNCTION ID LPAREN parametros RPAREN LCHAV listadecomandos RCHAV
+              | FUNCTION ID LPAREN RPAREN LCHAV listadecomandos RCHAV'''
+  if (isinstance(p[4], Parametros)):
+    p[0] = FuncDec(p[2], p[4], p[7])
   else:
-    p[0] = FuncDec(p[1], None, p[5])
+    p[0] = FuncDec(p[2], None, p[6])
 
 
 def p_atribuir(p):
@@ -234,9 +234,9 @@ def p_exp16(p):
            | exp16 OR exp17
            | exp17'''
   if (len(p) > 2):
-    if (p[2] == '&&'):
+    if (p[2] == '&&' or p[2] == '&' or p[2] == 'and'):
       p[0] = AndExp(p[1], p[3])
-    elif (p[2] == '||'):
+    elif (p[2] == '||' or p[2] == '|' or p[2] == 'or'):
       p[0] = OrExp(p[1], p[3])
   else:
     p[0] = p[1]
@@ -250,18 +250,18 @@ def p_exp17(p):
            | BOOL
            | ID
            | LPAREN exp RPAREN'''
-  pass
-  #if (isinstance(p[1], int)):
-  #  p[0] = IntExp(p[1])
-  #elif (len(p) == 4):
-  #  p[0] = ExpressaoExp(p[2])
-  #elif (isinstance(p[1], float)):
-  #  p[0] = FloatExp(p[1])
-  #elif (p[1] == 'true' or p[1] == 'false'):
-  #  p[0] = BoolExp(p[1])
-  #elif (p[1][0] == '$'):
-  #  p[0] = VarExp(p[1])
-  #elif (isinstance(p[1], ChamadaFunction)):
-  #  p[0] = CallFuncExp(p[1])
-  #else:
-  #  p[0] = IdExp(p[1])
+
+  if (isinstance(p[1], int)):
+    p[0] = IntExp(p[1])
+  elif (len(p) == 4):
+    p[0] = ExpressaoExp(p[2])
+  elif (isinstance(p[1], float)):
+    p[0] = FloatExp(p[1])
+  elif (p[1] == 'true' or p[1] == 'false'):
+    p[0] = BoolExp(p[1])
+  elif (p[1][0] == '$'):
+    p[0] = VarExp(p[1])
+  elif (isinstance(p[1], ChamadaFunction)):
+    p[0] = CallFuncExp(p[1])
+  else:
+    p[0] = IdExp(p[1])

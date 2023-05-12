@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "visitorsemantico.py": [
+      {
+        "id": "9afaff0f-ccb7-4835-898f-8894c0d836fd",
+        "line": 16,
+        "version": 120,
+        "index": 360
+      }
+    ]
+  }
 }

@@ -30,6 +30,7 @@ reservadas = {
   'exit': 'EXIT',
   'for': 'FOR',
   'foreach': 'FOREACH',
+  'function': 'FUNCTION',
   'global': 'GLOBAL',
   'goto': 'GOTO',
   'if': 'IF',
@@ -58,12 +59,9 @@ tokens = [
   'INICIO', 'FIM', 'ATRIBUICAO', 'SOMA', 'SUB', 'MULTI', 'DIVISAO', 'MODULO',
   'POT', 'LPAREN', 'RPAREN', 'LCHAV', 'RCHAV', 'VIRGULA', 'PONTOVIRGULA',
   'AND', 'OR', 'NOT', 'MENOR', 'MAIOR', 'MENORIGUAL',
-  'MAIORIGUAL', 'DIFERENTE', 'IGUAL', 'IDENTICO', 'NAOIDENTICO', 'INCREMENTA',
-  'DECREMENTA', 'ERRO', 'BOOL', 'INT', 'FLOAT', 'STRING', 'ID', 'VAR', 'COMENT'
+  'MAIORIGUAL', 'DIFERENTE', 'IGUAL', 'INCREMENTA',
+  'DECREMENTA', 'BOOL', 'INT', 'FLOAT', 'STRING', 'ID', 'VAR', 'COMENT'
 ] + list(reservadas.values())
-
-# stack = [0]
-# states = (('idstate', 'exclusive'), ('dedstate', 'exclusive'))
 
 t_INICIO = r'\<\?php'
 t_FIM = r'\?\>'
@@ -89,60 +87,9 @@ t_MENORIGUAL = r'<='
 t_MAIORIGUAL = r'>='
 t_DIFERENTE = r'(!=)|(<>)'
 t_IGUAL = r'=='
-t_IDENTICO = r'==='
-t_NAOIDENTICO = r'!=='
 t_INCREMENTA = r'\+\+'
 t_DECREMENTA = r'--'
-t_ERRO = r'@'
 t_BOOL = r'(true)|(false)'
-
-
-def t_breakline(t):
-  r'\n+'
-  t.lexer.lineno += len(t.value)
-  # t.lexer.begin('idstate')
-
-
-# def t_idstate_blankline(t):
-#   r'([ \t]+)\n'
-#   pass
-
-# def t_idstate_linewithcode(t):
-#   '([ \t]+) | ([a-zA-Z])'
-#   n_spaces = space_counter(t)
-#   t.lexer.begin('INITIAL')
-#   if n_spaces < stack[-1]:
-#     t.lexer.skip(-len(t.value))
-#     stack.pop()
-#     t.type = 'DEDENT'
-#     t.lexer.begin('dedstate')
-#   elif n_spaces > stack[-1]:
-#     stack.append(n_spaces)
-#     t.type = 'IDENT'
-#   elif n_spaces == 0:
-#     t.lexer.skip(-1)
-
-# def t_dedstate_linewithdedent(t):
-#   '([ \t]+) | ([a-zA-Z])'
-#   n_spaces = space_counter(t)
-#   if n_spaces < stack[-1]:
-#     t.lexer.skip(-len(t.value))
-#     stack.pop()
-#     t.type = 'DEDENT'
-#     return t
-#   elif n_spaces >= stack[-1]:
-#     t.lexer.begin('INITIAL')
-#     if n_spaces > stack[-1]:
-#       print('Erro de dedentação --->', n_spaces)
-#     elif n_spaces == 0:
-#       t.lexer.skip(-1)
-
-# def t_idstate_error(t):
-#   t.lexer.skip(1)
-
-# def t_dedstate_error(t):
-#   t.lexer.skip(1)
-
 
 def t_INT(t):
   r'\d+'
@@ -189,7 +136,18 @@ def t_error(t):
 
 lex.lex()
 programa = """<?php
-    $a = 3;
+  $a = 34;
+  $b=1;
+  $c=3;
+  if($a==5){
+    $a=3;
+  }
+  for ($i=0;$i<3;$i++){
+    $a=1;
+  }
+  if($b==1 && $c==3){
+    $a=10;
+  }
 ?>
 """
 

@@ -14,159 +14,209 @@ class VisitorPrinter(Visitor):
     functionorcmds_cmd.comando.accept(self)
   
   def visitFunctionOrCmds_Function(self, functionorcmds_function):
-    pass
-    #functionorcmds_function.function.accept(self)
+    functionorcmds_function.function.accept(self)
  
   def visitFunctionOrCmds_CmdFun(self, functionorcmds_cmdfun):
-    pass
-    #functionorcmds_cmdfun.comando.accept(self)
-    #functionorcmds_cmdfun.functionorcmds.accept(self)
+    functionorcmds_cmdfun.comando.accept(self)
+    functionorcmds_cmdfun.functionorcmds.accept(self)
   
   def visitFunctionOrCmds_FunctionFunc(self, functionorcmds_functionfunc):
-    pass
-    #functionorcmds_functionfunc.function.accept(self)
-    #functionorcmds_functionfunc.functionorcmds.accept(self)
+    functionorcmds_functionfunc.function.accept(self)
+    functionorcmds_functionfunc.functionorcmds.accept(self)
 
   
   #comando
   def visitCmd_Var(self, cmd_var):
     cmd_var.atribuir.accept(self)
+    print(end='\n')
   
   def visitICmd_Exp(self, cmd_exp):
-    pass
-    #cmd_exp.expressao.accept(self)
-    #print(';')
+    cmd_exp.expressao.accept(self)
+    print(';')
   
   def visitCmd_Return(self, cmd_return):
-    pass
+    print("return", end='')
+    cmd_return.expressao.accept(self)
+    print(';')
   
   def visitCmd_IfElse(self, cmd_ifelse):
-    pass
+    print("if (", end='')
+    cmd_ifelse.expressao.accept(self)
+    print(") {")
+    cmd_ifelse.listadecomandos.accept(self)
+    print("} else {")
+    cmd_ifelse.listadecomandos2.accept(self)
+    print("}")
   
   def visitCmd_If(self, cmd_if):
-    pass
+    print("if (", end='')
+    cmd_if.expressao.accept(self)
+    print(") {")
+    cmd_if.listadecomandos.accept(self)
+    print("}")
   
   def visitCmd_For(self, cmd_for):
-    pass
+    print("for (", end='')
+    cmd_for.atribuir.accept(self)
+    cmd_for.expressao.accept(self)
+    print(';', end='')
+    cmd_for.expressao2.accept(self)
+    print(') {')
+    cmd_for.listadecomandos.accept(self)
+    print('}')
   
   def visitCmd_While(self, cmd_while):
-    pass
+    print('while (', end='')
+    cmd_while.expressao.accept(self)
+    print(') {')
+    cmd_while.listadecomandos.accept(self)
+    print('}')
 
   #Lista de comandos
-  def visitLst_Cmd(self, lst_cmdself):
-    pass
+  def visitLst_Cmd(self, lst_cmd):
+    lst_cmd.comando.accept(self)
   
   def visitLst_ListaCmd(self, lst_listacmd):
-    pass
+    lst_listacmd.listadecomandos.accept(self)
+    lst_listacmd.comando.accept(self)
 
   #function
   def visitFuncDec(self, funcdec):
-    pass  
-  
+    print('function ', end='')
+    print(funcdec.ID, end='')
+    print('(', end='')
+    if (funcdec.parametros != None):
+      funcdec.parametros.accept(self)
+    print(') {', end='')
+    funcdec.listadecomandos.accept(self)
+    print('}')
+    
   #atribuir
   def visitAtribuirVar(self, atribuirvar):
     print(atribuirvar.var, end='')
     print(' = ', end='')
-    print(atribuirvar.exp, end='')
-#    atribuirvar.exp.accept(self)
-    print(';')
+    atribuirvar.exp.accept(self)
+    print(';', end='')
 
   #chamadaFunc
   def visitChamadaFunction(self, chamadafunction):
-    pass
+    print(chamadafunction.ID, ' (')
+    if (chamadafunction.parametros != None):
+      chamadafunction.parametros.accept(self)
+    print(')')
 
   #parametros
   def visitParam_Unico(self, param_unico):
-    pass
+    print(param_unico.var, end='')
 
   def visitParam_Composto(self, param_composto):
-    pass
+    print(param_composto.var, ', ', end='')
+    param_composto.parametros.accept(self)
 
 
   #expressao
   def visitPotExp(self, potexp):
-    pass
-    #potexp.exp.accept(self)
-    #print(' ** ', end='')
-    #potexp.exp2.accept(self)
+    potexp.exp.accept(self)
+    print(' ** ', end='')
+    potexp.exp2.accept(self)
 
   def visitIncrementExp(self, incrementexp):
-    pass
+    incrementexp.exp2.accept(self)
+    print('++', end='')
 
   def visitDecrementExp(self, decrementexp):
-    pass
+    decrementexp.exp3.accept(self)
+    print('--', end='')
 
   def visitNotExp(self, notexp):
-    pass
+    print('!', end='')
+    notexp.exp5.accept(self)
 
   def visitSomaExp(self, somaexp):
-    pass
-#    somaexp.exp5.accept(self)
-#    print(' + ', end='')
-#    somaexp.exp6.accept(self)
+    somaexp.exp5.accept(self)
+    print(' + ', end='')
+    somaexp.exp6.accept(self)
 
   def visitSubExp(self, subexp):
-    pass
+    subexp.exp5.accept(self)
+    print(' - ', end='')
+    subexp.exp6.accept(self)
 
   def visitMulExp(self, mulexp):
-    pass
+    mulexp.exp5.accept(self)
+    print(' * ', end='')
+    mulexp.exp6.accept(self)
 
   def visitDivExp(self, divexp):
-    pass
+    divexp.exp5.accept(self)
+    print(' / ', end='')
+    divexp.exp6.accept(self)
 
   def visitModuloExp(self, moduloexp):
-    pass
+    moduloexp.exp5.accept(self)
+    print(' % ', end='')
+    moduloexp.exp6.accept(self)
 
   def visitMaiorExp(self, maiorexp):
-    pass
+    maiorexp.exp5.accept(self)
+    print(' > ', end='')
+    maiorexp.exp6.accept(self)
 
   def visitMenorExp(self, menorexp):
-    pass
+    menorexp.exp5.accept(self)
+    print(' < ', end='')
+    menorexp.exp6.accept(self)
 
   def visitMaiorIgualExp(self, maiorigualexp):
-    pass
+    maiorigualexp.exp5.accept(self)
+    print(' >= ', end='')
+    maiorigualexp.exp6.accept(self)
 
   def visitMenorIgualExp(self, menorigualexp):
-    pass
+    menorigualexp.exp5.accept(self)
+    print(' <= ', end='')
+    menorigualexp.exp6.accept(self)
 
   def visitIgualExp(self, igualexp):
-    pass
+    igualexp.exp5.accept(self)
+    print(' == ', end='')
+    igualexp.exp6.accept(self)
 
   def visitDifExp(self, difexp):
-    pass
+    difexp.exp5.accept(self)
+    print(' != ', end='')
+    difexp.exp6.accept(self)
 
   def visitAndExp(self, andexp):
-    pass
+    andexp.exp5.accept(self)
+    print(' && ', end='')
+    andexp.exp6.accept(self)
 
   def visitOrExp(self, orexp):
-    pass
+    orexp.exp5.accept(self)
+    print(' || ', end='')
+    orexp.exp6.accept(self)
 
   def visitChamadaFuncExp(self, chamadafuncexp):
-    pass
+    chamadafuncexp.chamadaFunc.accept(self)
 
   def visitVarExp(self, varexp):
-    pass
-    #print(varexp.var, end='')
+    print(varexp.var, end='')
 
   def visitIntExp(self, intexp):
-    pass
-    #print(intexp.int, end='')
+    print(intexp.int, end='')
 
   def visitFloatExp(self, floatexp):
-    pass
-    #print(floatexp.float, end='')
+    print(floatexp.float, end='')
 
   def visitBoolExp(self, boolexp):
-    pass
-    #print(boolexp.bool, end='')
+    print(boolexp.bool, end='')
 
   def visitIdExp(self, idexp):
-    pass
-    #print(idexp.ID, end='')
+    print(idexp.ID, end='')
 
   def visitExpressaoExp(self, expressaoexp):
-    pass
-    #print('(', end='')
-    #print(expressaoexp.exp, end='')
-    #print(')', end='')
+    print('(', end='')
+    print(expressaoexp.exp, end='')
+    print(')', end='')
  

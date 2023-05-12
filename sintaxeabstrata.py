@@ -196,190 +196,192 @@ class Exp(metaclass=ABCMeta):
     pass
 
 class PotExp(Exp):
-  def __int__(self, exp1, exp2):
+  def __init__(self, exp1, exp2):
     self.exp1 = exp1
     self.exp2 = exp2
   def accept(self, visitor):
-    visitor.visitPotExp(self)
+    return visitor.visitPotExp(self)
 
 #Exp2 Incrementa
 class IncrementExp(Exp):
-  def __int__(self, exp2):
+  def __init__(self, exp2):
     self.exp2 = exp2
   def accept(self, visitor):
-    visitor.visitIncrementExp(self)
+    return visitor.visitIncrementExp(self)
 
 
 #Exp3 Decrementa    
 class DecrementExp(Exp):
-  def __int__(self, exp3):
+  def __init__(self, exp3):
     self.exp3 = exp3
   def accept(self, visitor):
-    visitor.visitDecrementExp(self)
+    return visitor.visitDecrementExp(self)
 
 
 #Exp4 Not
 class NotExp(Exp):
-  def __int__(self, exp5):
+  def __init__(self, exp5):
     self.exp5 = exp5
   def accept(self, visitor):
-    visitor.visitNotExp(self)
+    return visitor.visitNotExp(self)
 
 
 #Exp5 Soma    
 class SomaExp(Exp):
-  def __int__(self, exp5, exp6):
+  def __init__(self, exp5, exp6):
     self.exp5 = exp5
     self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitSomaExp(self)
+    return visitor.visitSomaExp(self)
 
 
 #Exp6 Subtração    
 class SubExp(Exp):
-  def __int__(self, exp6, exp7):
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
     self.exp6 = exp6
-    self.exp7 = exp7
   def accept(self, visitor):
-    visitor.visitSubExp(self)
+    return visitor.visitSubExp(self)
 
 #Exp7 Multi
 class MulExp(Exp):
-  def __int__(self, exp7, exp8):
-    self.exp7 = exp7
-    self.exp8 = exp8
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitMulExp(self)
+    return visitor.visitMulExp(self)
 
 
 #Exp8 Divisão    
 class DivExp(Exp):
-  def __int__(self, exp8, exp9):
-    self.exp8 = exp8
-    self.exp9 = exp9
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitDivExp(self)
+    return visitor.visitDivExp(self)
 
 
 #Exp9 Modulo    
 class ModuloExp(Exp):
-  def __int__(self, exp9, exp10):
-    self.exp9 = exp9
-    self.exp10 = exp10
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitModuloExp(self)
+    return visitor.visitModuloExp(self)
 
 
 #Exp10 maior    
 class MaiorExp(Exp):
-  def __int__(self, exp10, exp11):
-    self.exp10 = exp10
-    self.exp11 = exp11
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitMaiorExp(self)
+    return visitor.visitMaiorExp(self)
 
 
 #Exp11 menor    
 class MenorExp(Exp):
-  def __int__(self, exp11, exp12):
-    self.exp11 = exp11
-    self.exp12 = exp12
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitMenorExp(self)
+    return visitor.visitMenorExp(self)
 
 
 #Exp12 maiorIgual    
 class MaiorIgualExp(Exp):
-  def __int__(self, exp12, exp13):
-    self.exp1 = exp12
-    self.exp2 = exp13
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitMaiorIgualExp(self)
+    return visitor.visitMaiorIgualExp(self)
 
 
 #Exp13 menorIgual    
 class MenorIgualExp(Exp):
-  def __int__(self, exp13, exp14):
-    self.exp13 = exp13
-    self.exp14 = exp14
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitMenorIgualExp(self)
+    return visitor.visitMenorIgualExp(self)
 
 
 #Exp14 Igual    
 class IgualExp(Exp):
-  def __int__(self, exp14, exp15):
-    self.exp14 = exp14
-    self.exp15 = exp15
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitIgualExp(self)
+    return visitor.visitIgualExp(self)
 
 
 #Exp15 Dif
 class DifExp(Exp):
-  def __int__(self, exp15, exp16):
-    self.exp15 = exp15
-    self.exp16 = exp16
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitDifExp(self)
+    return visitor.visitDifExp(self)
 
 
 #Exp16
 class AndExp(Exp):
-  def __int__(self, exp16, exp17):
-    self.exp16 = exp16
-    self.exp17 = exp17
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitAndExp(self)
+    return visitor.visitAndExp(self)
 
 class OrExp(Exp):
-  def __int__(self, exp16, exp17):
-    self.exp16 = exp16
-    self.exp17 = exp17
+  def __init__(self, exp5, exp6):
+    self.exp5 = exp5
+    self.exp6 = exp6
   def accept(self, visitor):
-    visitor.visitOrExp(self)
+    return visitor.visitOrExp(self)
 
 
 #Exp17
 class CallFuncExp(Exp):
-  def __int__(self, chamadaFunc):
+  def __init__(self, chamadaFunc):
     self.chamadaFunc = chamadaFunc
   def accept(self, visitor):
-    visitor.visitChamadaFuncExp(self)
+    return visitor.visitChamadaFuncExp(self)
 
 class VarExp(Exp):
-  def __int__(self, var):
+  def __init__(self, var):
     self.var = var
   def accept(self, visitor):
-    visitor.visitVarExp(self)
+    return visitor.visitVarExp(self)
 
 class IntExp(Exp):
-  def __int__(self, int):
+  def __init__(self, int):
     self.int = int
   def accept(self, visitor):
-    visitor.visitIntExp(self)
+    return visitor.visitIntExp(self)
 
 class FloatExp(Exp):
-  def __int__(self, float):
+  def __init__(self, float):
     self.float = float
   def accept(self, visitor):
-    visitor.visitFloatExp(self)
+    return visitor.visitFloatExp(self)
 
 class BoolExp(Exp):
-  def __int__(self, bool):
+  def __init__(self, bool):
     self.bool = bool
   def accept(self, visitor):
-    visitor.visitBoolExp(self)
+    return visitor.visitBoolExp(self)
 
 class IdExp(Exp):
-  def __int__(self, ID):
+  def __init__(self, ID):
     self.ID = ID
   def accept(self, visitor):
-    visitor.visitIdExp(self)
+    return visitor.visitIdExp(self)
 
 class ExpressaoExp(Exp):
-  def __int__(self, exp):
+  def __init__(self, exp):
     self.exp = exp
   def accept(self, visitor):
-    visitor.visitExpressaoExp(self)
+    return visitor.visitExpressaoExp(self)
+
+
 
